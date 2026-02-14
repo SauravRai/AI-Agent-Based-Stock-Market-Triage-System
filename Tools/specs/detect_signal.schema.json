@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "detect_signal",
+  "type": "object",
+  "properties": {
+    "tool": { "const": "detect_signal" },
+    "input": {
+      "type": "object",
+      "properties": {
+        "symbol": { "type": "string" },
+        "timeframe": { "type": "string" },
+        "ohlcv": { "type": "array" }
+      },
+      "required": ["symbol", "ohlcv"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "signal_type": {
+          "type": "string",
+          "enum": ["breakout", "pullback", "support_bounce", "none"]
+        },
+        "key_levels": { "type": "object" },
+        "volume_confirmation": { "type": "boolean" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      },
+      "required": ["signal_type", "confidence"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["tool", "input", "output"]
+}

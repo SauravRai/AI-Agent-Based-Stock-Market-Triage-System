@@ -1,0 +1,18 @@
+stateDiagram-v2
+    [*] --> intake
+    intake --> missing_info_check
+
+    missing_info_check --> data_ingestion: data complete
+    missing_info_check --> missing_info_check: ask for missing inputs
+
+    data_ingestion --> signal_detection
+    signal_detection --> risk_evaluation
+    risk_evaluation --> proposal_generation
+
+    proposal_generation --> human_approval: hitl_required == true
+    proposal_generation --> finalize: hitl_required == false
+
+    human_approval --> finalize: approved
+    human_approval --> proposal_generation: rejected/adjustment
+
+    finalize --> [*]

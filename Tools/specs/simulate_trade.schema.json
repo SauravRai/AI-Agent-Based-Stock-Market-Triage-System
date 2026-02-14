@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "simulate_trade",
+  "type": "object",
+  "properties": {
+    "tool": { "const": "simulate_trade" },
+    "input": {
+      "type": "object",
+      "properties": {
+        "entry": { "type": "number" },
+        "exit_price": { "type": "number" },
+        "position_size": { "type": "number" }
+      },
+      "required": ["entry", "exit_price", "position_size"]
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "pnl": { "type": "number" },
+        "return_percent": { "type": "number" },
+        "confidence": { "type": "number" }
+      },
+      "required": ["pnl", "confidence"]
+    }
+  },
+  "required": ["tool", "input", "output"]
+}

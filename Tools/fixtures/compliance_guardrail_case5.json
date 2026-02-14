@@ -1,0 +1,21 @@
+{
+  "tool": "compliance_guardrail",
+  "input": {
+    "symbol": "RELIANCE",
+    "capital": 500000,
+    "requested_allocation_pct": 55,
+    "risk_policy": {
+      "max_allocation_pct": 20,
+      "requires_manual_review_above_pct": 25
+    }
+  },
+  "output": {
+    "status": "requires_human_review",
+    "approved_allocation_pct": 20,
+    "reason": "Requested allocation exceeds allowed policy threshold.",
+    "compliance_notes": [
+      "Max allowed per trade is 20%",
+      "Manual approval required for allocations above 25%"
+    ]
+  }
+}

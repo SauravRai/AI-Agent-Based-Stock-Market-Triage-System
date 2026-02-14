@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "evaluate_risk",
+  "type": "object",
+  "properties": {
+    "tool": { "const": "evaluate_risk" },
+    "input": {
+      "type": "object",
+      "properties": {
+        "capital": { "type": "number" },
+        "risk_percent": { "type": "number" },
+        "entry": { "type": "number" },
+        "stop_loss": { "type": "number" }
+      },
+      "required": ["capital", "risk_percent", "entry", "stop_loss"]
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "position_size": { "type": "number" },
+        "max_risk_amount": { "type": "number" },
+        "risk_reward_ratio": { "type": "number" },
+        "confidence": { "type": "number" }
+      },
+      "required": ["position_size", "max_risk_amount", "confidence"]
+    }
+  },
+  "required": ["tool", "input", "output"]
+}
